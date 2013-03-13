@@ -1,0 +1,74 @@
+package cs320.api;
+
+import java.util.List;
+
+public class SortAPI {
+	private static <T extends Comparable<T>> void swap(int left, int right, List<T> list) {
+		T tmp = list.get(left);
+		list.set(left,list.get(right));
+		list.set(right,tmp);
+	}
+	
+	private static <T extends Comparable<T>> T median(int left, int right, List<T> list) {
+	    int center = (left + right) >> 1;
+	    
+        if (list.get(left).compareTo(list.get(center)) > 0) {
+	    	swap(left,center,list);
+	    }
+	    if (list.get(left).compareTo(list.get(right)) > 0) {
+	    	swap(left,right,list);
+	    }
+	    if (list.get(center).compareTo(list.get(right)) > 0) {
+	    	swap(center, right, list);
+	    }
+	    
+	    swap(center, right -1, list); 
+	    
+	    return list.get(right - 1);
+	}
+	
+	public static <T extends Comparable<T>> void quickSort(int left,int right,List<T> list) {
+        if (right - left > 4) {
+			T pivotloc = median(left, right, list);
+			int low = left;
+			int high = right - 1;
+			while (low < high) {
+				while (list.get(++low).compareTo(pivotloc) < 0) {
+				}
+				while (list.get(--high).compareTo(pivotloc) > 0) {
+				}
+				if (low < high) {
+					swap(low, high, list);
+				}
+			}
+			swap(low, right - 1, list);
+			quickSort(left, low - 1, list);
+			quickSort(low + 1, right, list);
+		}
+        else {
+        	insertionSort(left,right,list);
+        }
+	}
+
+	public static <T extends Comparable<T>> void insertionSort(int left, int right, List<T> list) {
+		for (int j, i = left + 1; i <= right; i++) {
+			T tmp = list.get(i);
+			for (j = i; ((j > left) && (list.get(j - 1).compareTo(tmp) > 0)); j--) {
+				list.set(j, list.get(j-1));
+			}
+			list.set(j,tmp);
+		}
+	}
+	
+	public static <T extends Comparable<T>> int getInsertIndex(T val, List<T> list) {
+		int i = 0;
+		for(T t : list) {
+			if(val.compareTo(t) <= 0) {
+				return i;
+			}
+			i++;
+		}
+		
+		return -1;
+	}
+}

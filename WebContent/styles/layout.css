@@ -1,0 +1,102 @@
+table {
+	border: thin solid black;
+	border-collapse: collapse;
+	caption-side: top;
+	margin: 20px;
+}
+
+td,th {
+	border: thin dotted gray;
+	padding: 5px;
+}
+
+caption { /*padding-top: 8px;*/
+	padding-bottom: 8px;
+}
+
+.center {
+	text-align: center;
+}
+
+.right {
+	text-align: right;
+}
+
+.left {
+	text-align: left;
+}
+
+.top {
+	vertical-align: text-top;
+}
+
+.alignToTable {
+	margin-left: 20px;
+}
+
+.hiddenTable {
+	border-style: none;
+	/*margin: auto;*/
+}
+.hiddenTable th, .hiddenTable td {
+	border-style: none;
+}
+.hiddenTable th {
+	word-break: keep-all;
+    white-space:nowrap;
+    text-align: left;
+    vertical-align:text-top;
+}
+.hiddenTable table {
+	border-style: none;
+    margin-left: 0;
+    margin-right: 0;
+}
+.hiddenTable table th {
+	padding-left: 0;
+}
+.hiddenTable table td {
+	padding-left: 10px;
+}
+.bubble {
+	position: relative;
+	width: 160px;
+	height: 120px;
+	padding: 3px;
+	border: #C2B793 solid 3px;
+	-webkit-border-radius: 28px;
+	-moz-border-radius: 28px;
+	border-radius: 28px;
+	float: right;
+	margin: 0 20px 20px 0px;
+}
+.bubble:after {
+	position: absolute;
+	top: 30px;
+	left: -31px;
+	border-style: solid;
+	border-width: 12px 31px 12px 0;
+	display: block;
+	width: 0;
+	z-index: 1;
+}
+.bubble:before {
+	position: absolute;
+	top: 28px;
+	left: -36px;
+	border-style: solid;
+	border-width: 14px 33px 14px 0;
+	display: block;
+	width: 0;
+	z-index: 0;
+}
+
+#author {
+	padding-bottom: 5px;
+}
+#log {
+	text-align:right;
+	margin: 20px;
+	/*padding-right:5px;*/
+	border-bottom: dotted black thin;
+}

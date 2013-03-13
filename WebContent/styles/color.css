@@ -1,0 +1,32 @@
+th {
+    background-color: #CC6600;
+}
+
+tr.highlight td {
+  color: #223;
+  background-color: #cba;
+}
+.cellcolor {
+    background-color: #FCBA7A;
+}
+.hiddenTable th, .hiddenTable td {
+    background-color: white;
+}
+.hiddenTable th,.hiddenTable td {
+	background-color: white;
+}
+.bubble {
+	background: #E2DE86;
+}
+.bubble:after {
+	border-color: transparent #E2DE86;
+}
+.bubble:before {
+	border-color: transparent #C2B793;
+}
+.bubble a:link {
+	color: #b76666;
+}
+.bubble a:visited {
+	color: #b75c47;
+}

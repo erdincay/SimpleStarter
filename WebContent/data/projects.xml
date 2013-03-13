@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2013 (http://www.altova.com) by  () -->
+<projects>
+	<project>
+		<id>1</id>
+		<title>SHOW ME THE MONEY</title>
+		<author>kern</author>
+		<target>10000</target>
+		<date>03/24/2013</date>
+		<duration>30</duration>
+		<decription>I went to see the doctor about my hearing loss and he gave me some medicine and told me to take two drops a day in my beer.I've been doing it for 5 days now and I still haven't noticed any improvement.</decription>
+		<rewards>
+			<reward>
+				<amount>10</amount>
+				<decription>Even though we've been married 14 years, I still look at my wife the same as I did on my wedding day---With regret.</decription>
+			</reward>
+			<reward>
+				<amount>50</amount>
+				<decription>My legs always feel like jelly after sex.It must be all the running beforehand.</decription>
+			</reward>
+			<reward>
+				<amount>100</amount>
+				<decription>My son's school is closed today because "the playground is like an ice rink" So we're off to the ice rink this afternoon.</decription>
+			</reward>
+		</rewards>
+	</project>
+	<project>
+		<id>2</id>
+		<title>WHY SO SERIOUS</title>
+		<author>ashley</author>
+		<target>100000</target>
+		<date>04/24/2013</date>
+		<duration>365</duration>
+		<decription>I went up to a homeless man as I came out of a pub last night and said, "What would you say if I asked you to come back to my house for a few drinks and a 3 course meal in front of the fireplace?" "I'd say yes," he replied. "Exactly," I said, shaking my head and walking away, "What the fuck is wrong with women these days?"</decription>
+		<rewards>
+			<reward>
+				<amount>1000</amount>
+				<decription>We were that poor when I was a child, my bath toys used to be a couple of dirty dishes and some cutlery.</decription>
+			</reward>
+			<reward>
+				<amount>5000</amount>
+				<decription>As my girlfriend started to whine, I gently patted her back, "That's right. Let it all out." But it doesn't matter how much air you remove, you can never get your blow-up doll back in the box.</decription>
+			</reward>
+			<reward>
+				<amount>20000</amount>
+				<decription>Whenever my wife says, "We need to talk" I never seem to get much of a chance.</decription>
+			</reward>
+		</rewards>
+	</project>
+	<project>
+		<id>3</id>
+		<title>LEAVE YOUR SLEEP</title>
+		<author>ashley</author>
+		<target>500</target>
+		<date>03/24/2013</date>
+		<duration>3</duration>
+		<decription>My daughter was asked to draw something from her personal life for a school project. After, she showed me and I said, "Darling, where did you see pink elephant and a gorilla standing beside a waterfall?" "It's not," she replied. "It's mummy and Uncle Kev in the shower."</decription>
+		<rewards>
+			<reward>
+				<amount>1000</amount>
+				<decription>I think someone may be sending me death threats. Woke up this morning with a Tesco burger on my pillow.</decription>
+			</reward>
+			<reward>
+				<amount>5000</amount>
+				<decription>New releases this week at Blockbuster - The staff.</decription>
+			</reward>
+			<reward>
+				<amount>20000</amount>
+				<decription>Whenever my wife says, "We need to talk" I never seem to get much of a chance.</decription>
+			</reward>
+		</rewards>
+	</project>
+	<project>
+		<id>4</id>
+		<title>EYE OF SAURON</title>
+		<author>andy</author>
+		<target>5000</target>
+		<date>03/24/2013</date>
+		<duration>18</duration>
+		<decription>Our neighbour's dog shit in our garden so my mum told me to get a shovel and throw it over the fence. I don't see what that solved, now we've got dog shit in our garden and the neighbours have our shovel. </decription>
+		<rewards>
+			<reward>
+				<amount>10</amount>
+				<decription>Tesco are giving treble points on your Clubcard for all burgers and petrol, starting Monday.The deal is called Only Fuel and Horses.</decription>
+			</reward>
+			<reward>
+				<amount>20</amount>
+				<decription>I can't believe how thick the snow is out there. I asked a snowman for the time and he just stared at me.</decription>
+			</reward>
+			<reward>
+				<amount>50</amount>
+				<decription>My daughter admitted that she is having lesbian sex with her best friend. As a reward for her honesty, I bought her a video camera.</decription>
+			</reward>
+		</rewards>
+	</project>
+	<project>
+		<id>5</id>
+		<title>GREED IS GOOD</title>
+		<author>washington</author>
+		<target>9999999</target>
+		<date>02/24/2013</date>
+		<duration>100</duration>
+		<decription>My boss called me into his office today. He said, "I still think you're not too bright at all, Kev. But you have come early to work for the past 2 years. You deserve a reward." "Gee, thanks boss!" I said. "What's my reward then?" "How does a brand new car sound?" he asked, smiling. I said, "Vrooom, vrooooom."</decription>
+		<rewards>
+			<reward>
+				<amount>999</amount>
+				<decription>I got sacked tonight for refusing to serve some girl who'd clearly had far too many already. The fat bitch complained to my McManager.</decription>
+			</reward>
+			<reward>
+				<amount>9999</amount>
+				<decription>If women who sleep around too much were labelled "heroes" instead of "sluts", us guys would be having a lot more sex. Someone fucked up here...</decription>
+			</reward>
+			<reward>
+				<amount>99999</amount>
+				<decription>I've just seen Black Hawk Down in 3D. It was brilliant. Who needs HMV or Blockbusters when you live in Vauxhall?</decription>
+			</reward>
+		</rewards>
+	</project>
+</projects>

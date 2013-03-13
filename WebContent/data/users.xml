@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2013 (http://www.altova.com) by  () -->
+<users>
+	<user>
+		<id>1</id>
+		<name>cysun</name>
+		<password>abcd</password>
+	</user>
+	<user>
+		<id>2</id>
+		<name>cs320stu31</name>
+		<password>abcd</password>
+	</user>
+	<user>
+		<id>3</id>
+		<name>kern</name>
+		<password>kern</password>
+	</user>
+</users>
