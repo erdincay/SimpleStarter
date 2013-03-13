@@ -100,9 +100,9 @@ public class HtmlAPI {
 		return (Users) servlet.getServletContext().getAttribute(Users.fstrUsersContent);
 	}
 	
-	//public static void setUsers(HttpServlet servlet, Users val) {
-	//	servlet.getServletContext().setAttribute(Users.fstrUsersContent,val);
-	//}
+	public static void setUsers(HttpServlet servlet, Users val) {
+		servlet.getServletContext().setAttribute(Users.fstrUsersContent,val);
+	}
 	
 	//public static Projects getProjects(HttpServlet servlet) {
 	//	return (Projects) servlet.getServletContext().getAttribute(Projects.fstrProjectsContent);
