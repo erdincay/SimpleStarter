@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import cs320.model.Projects;
 import cs320.model.Users;
 
 public class HtmlAPI {
@@ -104,13 +105,13 @@ public class HtmlAPI {
 		servlet.getServletContext().setAttribute(Users.fstrUsersContent,val);
 	}
 	
-	//public static Projects getProjects(HttpServlet servlet) {
-	//	return (Projects) servlet.getServletContext().getAttribute(Projects.fstrProjectsContent);
-	//}
+	public static Projects getProjects(HttpServlet servlet) {
+		return (Projects) servlet.getServletContext().getAttribute(Projects.fstrProjectsContent);
+	}
 	
-	//public static void setProjects(HttpServlet servlet, Projects val) {
-	//	servlet.getServletContext().setAttribute(Projects.fstrProjectsContent, val);
-	//}
+	public static void setProjects(HttpServlet servlet, Projects val) {
+		servlet.getServletContext().setAttribute(Projects.fstrProjectsContent, val);
+	}
 	
 	public static String getUsrFromSession(HttpServletRequest request) {
 		return (String)request.getSession().getAttribute( fstrUsr );
