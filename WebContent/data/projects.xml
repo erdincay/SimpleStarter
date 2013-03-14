@@ -2,7 +2,6 @@
 <!-- edited with XMLSpy v2013 (http://www.altova.com) by  () -->
 <projects>
 	<project>
-		<id>1</id>
 		<title>SHOW ME THE MONEY</title>
 		<author>kern</author>
 		<target>10000</target>
@@ -25,9 +24,8 @@
 		</rewards>
 	</project>
 	<project>
-		<id>2</id>
 		<title>WHY SO SERIOUS</title>
-		<author>ashley</author>
+		<author>cysun</author>
 		<target>100000</target>
 		<date>04/24/2013</date>
 		<duration>365</duration>
@@ -48,9 +46,8 @@
 		</rewards>
 	</project>
 	<project>
-		<id>3</id>
 		<title>LEAVE YOUR SLEEP</title>
-		<author>ashley</author>
+		<author>cs320stu31</author>
 		<target>500</target>
 		<date>03/24/2013</date>
 		<duration>3</duration>
@@ -71,9 +68,8 @@
 		</rewards>
 	</project>
 	<project>
-		<id>4</id>
 		<title>EYE OF SAURON</title>
-		<author>andy</author>
+		<author>kern</author>
 		<target>5000</target>
 		<date>03/24/2013</date>
 		<duration>18</duration>
@@ -94,9 +90,8 @@
 		</rewards>
 	</project>
 	<project>
-		<id>5</id>
 		<title>GREED IS GOOD</title>
-		<author>washington</author>
+		<author>cysun</author>
 		<target>9999999</target>
 		<date>02/24/2013</date>
 		<duration>100</duration>

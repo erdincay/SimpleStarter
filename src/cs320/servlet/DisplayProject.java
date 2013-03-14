@@ -12,11 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cs320.api.HtmlAPI;
-import cs320.model.Factory;
-import cs320.model.Projects;
-import cs320.model.Project;
-import cs320.model.User;
-import cs320.model.Users;
+import cs320.model.ProjectD;
+import cs320.model.UserD;
+import cs320.pattern.FactoryF;
 
 /**
  * Servlet implementation class DisplayProject
@@ -48,7 +46,7 @@ public class DisplayProject extends HttpServlet {
         	response.sendRedirect("DisplayAllProjects");
         	return null;
 		}
-		Project prj = Projects.getProjectByID(id,Factory.getDbConnection());
+		ProjectD prj = FactoryF.getProjects().getProjectByID(id);
 		if (prj == null) {
 			response.sendRedirect("DisplayAllProjects");
         	return null;
@@ -57,7 +55,7 @@ public class DisplayProject extends HttpServlet {
 		boolean nosponsored = true;
 		String strUsr = HtmlAPI.getUsrFromSession(request);
 		if (strUsr != null) {
-			User usr = Users.getUserByName(strUsr,Factory.getDbConnection());
+			UserD usr = FactoryF.getUsers().getUserByName(strUsr);
 			//check if the usr have already been the sponsor to this project
 			nosponsored = !prj.checkPledgeByUser(usr);
 		}
@@ -84,7 +82,7 @@ public class DisplayProject extends HttpServlet {
 			return;
 		}
 		
-        Project prj = (Project) ret.get(0);
+        ProjectD prj = (ProjectD) ret.get(0);
         boolean nosponsored = (boolean) ret.get(1);
         
         request.setAttribute( "prj", prj );

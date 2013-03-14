@@ -9,11 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import java.sql.SQLException;
-
 import cs320.api.HtmlAPI;
-import cs320.model.Factory;
-import cs320.model.Users;
+import cs320.pattern.FactoryF;
 
 /**
  * Servlet implementation class Login
@@ -73,17 +70,12 @@ public class Login extends HttpServlet {
         	return;
         }
 		
-		try {
-	        if(Users.valid(strUsr, strPwd, Factory.getDbConnection())) {
-	        	HtmlAPI.setUsrToSession(request, strUsr);
-	            response.sendRedirect( "DisplayAllProjects" );
-	        }
-	        else {
-	        	response.sendRedirect( "Login" );
-	        }
-		} 
-		catch (SQLException e) {
-			throw new ServletException( e );
+		if(FactoryF.getUsers().valid(strUsr, strPwd)) {
+			HtmlAPI.setUsrToSession(request, strUsr);
+		    response.sendRedirect( "DisplayAllProjects" );
+		}
+		else {
+			response.sendRedirect( "Login" );
 		}
 	}
 

@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import cs320.model.Projects;
-import cs320.model.Users;
+import cs320.model.ProjectsI;
+import cs320.model.UsersC;
 
 public class HtmlAPI {
 	private static final String DefaultModernizr = "scripts/modernizr.custom.87909.js";
@@ -42,7 +42,7 @@ public class HtmlAPI {
         	}
         }
         generateModernizrScript(response);
-        //generateJQueryScript(response);
+        generateJQueryScript(response);
         out.println("</head>");
 	}
 	
@@ -97,20 +97,20 @@ public class HtmlAPI {
 		return nf.format(cur / total);
 	}
 	 
-	public static Users getUsers(HttpServlet servlet) {
-		return (Users) servlet.getServletContext().getAttribute(Users.fstrUsersContent);
+	public static UsersC getUsers(HttpServlet servlet) {
+		return (UsersC) servlet.getServletContext().getAttribute(UsersC.fstrUsersContent);
 	}
 	
-	public static void setUsers(HttpServlet servlet, Users val) {
-		servlet.getServletContext().setAttribute(Users.fstrUsersContent,val);
+	public static void setUsers(HttpServlet servlet, UsersC val) {
+		servlet.getServletContext().setAttribute(UsersC.fstrUsersContent,val);
 	}
 	
-	public static Projects getProjects(HttpServlet servlet) {
-		return (Projects) servlet.getServletContext().getAttribute(Projects.fstrProjectsContent);
+	public static ProjectsI getProjects(HttpServlet servlet) {
+		return (ProjectsI) servlet.getServletContext().getAttribute(ProjectsI.fstrProjectsContent);
 	}
 	
-	public static void setProjects(HttpServlet servlet, Projects val) {
-		servlet.getServletContext().setAttribute(Projects.fstrProjectsContent, val);
+	public static void setProjects(HttpServlet servlet, ProjectsI val) {
+		servlet.getServletContext().setAttribute(ProjectsI.fstrProjectsContent, val);
 	}
 	
 	public static String getUsrFromSession(HttpServletRequest request) {

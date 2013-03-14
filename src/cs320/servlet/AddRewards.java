@@ -10,10 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cs320.api.HtmlAPI;
-import cs320.model.Factory;
-import cs320.model.Project;
-import cs320.model.Projects;
-import cs320.model.Reward;
+import cs320.model.ProjectD;
+import cs320.model.RewardD;
+import cs320.pattern.FactoryF;
 
 /**
  * Servlet implementation class AddRewards
@@ -34,7 +33,7 @@ public class AddRewards extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
     
-    private Project checkValid(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException {
+    private ProjectD checkValid(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException {
 		// check if a user has logged in or not
 		String strUsr = HtmlAPI.getUsrFromSession(request);
 		if( strUsr == null )
@@ -56,7 +55,7 @@ public class AddRewards extends HttpServlet {
         	response.sendRedirect("DisplayAllProjects");
         	return null;
 		}
-		Project prj = Projects.getProjectByID(id, Factory.getDbConnection());
+		ProjectD prj = FactoryF.getProjects().getProjectByID(id);
 		if (prj == null) {
 			response.sendRedirect("DisplayAllProjects");
         	return null;
@@ -72,7 +71,7 @@ public class AddRewards extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Project prj = null;
+		ProjectD prj = null;
 		try {
 			prj = checkValid(request,response);
 		} catch (SQLException e) {
@@ -92,7 +91,7 @@ public class AddRewards extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Project prj = null;
+		ProjectD prj = null;
 		try {
 			prj = checkValid(request,response);
 		} catch (SQLException e) {
@@ -121,13 +120,8 @@ public class AddRewards extends HttpServlet {
             }
 
             // create the new reward and add to project
-            Reward rd = new Reward(amount, description);
-            try {
-				prj.getRewards().saveReward(rd, Factory.getDbConnection());
-			} 
-            catch (SQLException e) {
-				throw new ServletException(e);
-			}
+            RewardD rd = new RewardD(amount, description);
+            prj.getRewards().saveReward(rd);
         }
         // send the user to add another rewards or show the project
         if(submit.equals(fstrAdd)) {

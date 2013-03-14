@@ -1,7 +1,6 @@
 package cs320.servlet;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -10,7 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import cs320.model.Projects;
+import cs320.model.ProjectsI;
+import cs320.pattern.FactoryF;
 
 /**
  * Servlet implementation class DisplayAllProjects
@@ -18,6 +18,7 @@ import cs320.model.Projects;
 @WebServlet("/DisplayAllProjects")
 public class DisplayAllProjects extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final int maxRecordsPerPage = 100;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -44,16 +45,12 @@ public class DisplayAllProjects extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try {
-			// get the data
-			Projects prjs = new Projects();
-			
-			request.setAttribute( "prjs", prjs );
-			request.getRequestDispatcher( "/WEB-INF/DisplayAllProjects.jsp" ).forward(
-					request, response );
-		} catch (SQLException e) {
-			throw new ServletException( e );
-		}
+		// get the data
+		ProjectsI prjs = FactoryF.getProjects().generateProjects(maxRecordsPerPage);
+		
+		request.setAttribute( "prjs", prjs );
+		request.getRequestDispatcher( "/WEB-INF/DisplayAllProjects.jsp" ).forward(
+				request, response );
 	}
 
 	/**

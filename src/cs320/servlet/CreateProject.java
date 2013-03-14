@@ -14,10 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cs320.api.HtmlAPI;
-import cs320.model.Factory;
-import cs320.model.Projects;
-import cs320.model.User;
-import cs320.model.Users;
+import cs320.model.UserD;
+import cs320.pattern.FactoryF;
 
 /**
  * Servlet implementation class CreateProject
@@ -40,7 +38,7 @@ public class CreateProject extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
     
-    private User checkValid(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException {
+    private UserD checkValid(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException {
     	// check if a user has logged in or not
     	String strUsr = HtmlAPI.getUsrFromSession(request);
     	if( strUsr == null )
@@ -49,7 +47,7 @@ public class CreateProject extends HttpServlet {
     		return null;
     	}
     	
-    	User usr = Users.getUserByName(strUsr,Factory.getDbConnection());
+    	UserD usr = FactoryF.getUsers().getUserByName(strUsr);
     	if(usr == null) {
     		response.sendRedirect( "Login" );
     		return null;
@@ -62,7 +60,7 @@ public class CreateProject extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		User usr = null;
+		UserD usr = null;
 		try {
 			usr = checkValid(request,response);
 		} catch (SQLException e) {
@@ -81,7 +79,7 @@ public class CreateProject extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		User usr = null;
+		UserD usr = null;
 		try {
 			usr = checkValid(request,response);
 		} 
@@ -135,17 +133,11 @@ public class CreateProject extends HttpServlet {
         	response.sendRedirect("CreateProject");
         	return;
         }
-        // create the new project and add to projects
-		try {
-			long id = Projects.saveProject(usr, title, description, target, duration, date, Factory.getDbConnection());
-	        
-			// send the user to add rewards
-	        response.sendRedirect("AddRewards?" + HtmlAPI.getIdAttrName() + "="
-	        		+ id);
-		} 
-		catch (SQLException e) {
-			throw new ServletException(e);
-		}
+        long id = FactoryF.getProjects().saveProject(usr, title, description, target, duration, date);
+		
+		// send the user to add rewards
+		response.sendRedirect("AddRewards?" + HtmlAPI.getIdAttrName() + "="
+				+ id);
 	}
 
 }

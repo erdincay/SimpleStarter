@@ -12,12 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cs320.api.HtmlAPI;
-import cs320.model.Factory;
-import cs320.model.Project;
-import cs320.model.Projects;
-import cs320.model.Pledge;
-import cs320.model.User;
-import cs320.model.Users;
+import cs320.model.ProjectD;
+import cs320.model.PledgeD;
+import cs320.model.UserD;
+import cs320.pattern.FactoryF;
 
 /**
  * Servlet implementation class Sponsor
@@ -60,14 +58,14 @@ public class Sponsor extends HttpServlet {
         	response.sendRedirect("DisplayAllProjects");
         	return null;
 		}
-		Project prj = Projects.getProjectByID(id, Factory.getDbConnection());
+		ProjectD prj = FactoryF.getProjects().getProjectByID(id);
 		if (prj == null) {
 			response.sendRedirect("DisplayAllProjects");
         	return null;
 		}
 		
         //get the users data
-        User usr = Users.getUserByName(strUsr, Factory.getDbConnection());
+        UserD usr = FactoryF.getUsers().getUserByName(strUsr);
         if(usr == null) {
         	response.sendRedirect( "DisplayProject?" + HtmlAPI.getIdAttrName() + "=" + strID);
         	return null;
@@ -100,7 +98,7 @@ public class Sponsor extends HttpServlet {
 		if(ret == null) {
         	return;
         }
-		Project prj = (Project)ret.get(0);
+		ProjectD prj = (ProjectD)ret.get(0);
         
 		request.setAttribute("prj", prj);
 		request.getRequestDispatcher( "/WEB-INF/Sponsor.jsp" ).forward(
@@ -123,8 +121,8 @@ public class Sponsor extends HttpServlet {
         	return;
         }
 		
-		Project prj = (Project)ret.get(0);
-		User usr = (User) ret.get(1);
+		ProjectD prj = (ProjectD)ret.get(0);
+		UserD usr = (UserD) ret.get(1);
 
 		// get the user input
         String strAmount = request.getParameter( fstrAmount );
@@ -168,13 +166,8 @@ public class Sponsor extends HttpServlet {
         if(rewardAmount > pledgedAmount) {
         	rewardAmount = pledgedAmount;
         }
-        Pledge plg = new Pledge(pledgedAmount, rewardAmount);
-        try {
-			prj.addPledged(usr, plg);
-		} 
-        catch (SQLException e) {
-			throw new ServletException(e);
-		}
+        PledgeD plg = new PledgeD(pledgedAmount, rewardAmount);
+        prj.addPledged(usr, plg);
 
         response.sendRedirect( "DisplayProject?" + HtmlAPI.getIdAttrName() + "=" + prj.getIdentity());
 	}
