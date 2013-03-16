@@ -113,4 +113,13 @@ public class UsersXmlC extends HashSet<UserD> implements UsersC {
 		}
 		return null;
 	}
+
+	@Override
+	public boolean saveUser(String usrName, String passWord, String firstName,
+			String lastName) {
+		boolean ret =this.add(new UserD(generateID(), usrName, passWord, firstName, lastName));
+		saveXml();
+		
+		return ret;
+	}
 }

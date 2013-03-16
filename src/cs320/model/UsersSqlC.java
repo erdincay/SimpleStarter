@@ -71,4 +71,33 @@ public class UsersSqlC implements UsersC {
         
 		return usr;
 	}
+
+	@Override
+	public boolean saveUser(String usrName, String passWord, String firstName,
+			String lastName) {
+		boolean ret = false;
+		
+		try {
+			Connection conn = FactorySqlF.getDbConnection();
+			String sql = "insert into users (`user_name`, `password`, `first_name`, `last_name`) values (?, AES_ENCRYPT(?, ?), ?, ?)";
+	        PreparedStatement pstmt = conn.prepareStatement( sql );
+	        pstmt.setString( 1, usrName );
+	        pstmt.setString( 2, passWord );
+	        pstmt.setString( 3, passWord );
+	        pstmt.setString( 4, firstName );
+	        pstmt.setString( 5, lastName );
+	        
+	        if(pstmt.executeUpdate() > 0) {
+	        	ret = true;
+	        }
+
+	        conn.close();
+	        
+		} 
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return ret;
+	}
 }

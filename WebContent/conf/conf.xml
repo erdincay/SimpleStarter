@@ -2,8 +2,8 @@
 <conf>
 
 <database type = "sql" >
-<!-- url>jdbc:mysql://localhost/cs320stu61</url -->
-<url>jdbc:mysql://cs3.calstatela.edu/cs320stu61</url>
+<url>jdbc:mysql://localhost/cs320stu61</url>
+<!-- url>jdbc:mysql://cs3.calstatela.edu/cs320stu61</url -->
 <usr>cs320stu61</usr>
 <pwd>8i8b8Q!9</pwd>
 </database>

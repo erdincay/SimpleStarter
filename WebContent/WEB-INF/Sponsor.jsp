@@ -19,7 +19,7 @@
 				<tr>
 					<td>$<input type="number" step="any" min="0" name="amount"
 						id="amount" required="required" placeholder="number:1+" /></td>
-					<td><label id="notice" for="mount">It's up to you.</label></td>
+					<td><label for="amount">It's up to you.</label></td>
 				</tr>
 				<tr>
 					<th>Select your reward:</th>

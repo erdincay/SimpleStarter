@@ -30,3 +30,9 @@ tr.highlight td {
 .bubble a:visited {
 	color: #b75c47;
 }
+.register {
+	color: blue;
+}
+#InputWarn {
+	color: red;
+}
