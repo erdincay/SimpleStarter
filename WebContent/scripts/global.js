@@ -76,6 +76,22 @@ function clearWarn(whichInput) {
 	}
 }
 
+function getUsrnameOnServer(usrname, whichInput) {
+	warnMessage = " the user name is in used;";
+	$.get(
+			'http://localhost:8080/CS320Starter/CheckUser?username=' + usrname, 
+			function(responseJson) {
+				$.each(responseJson, function(key, value) {
+					if(key == usrname && value === 'true' ) {
+						showWarn(whichInput, warnMessage);
+					}
+					else {
+						clearWarn(whichInput);
+					}
+				});
+			});
+}
+
 function validRegister(whichForm,whichInput) {
 	var nameAttr = $(whichInput).attr('name');
 	var inputVal = $(whichInput).val();
@@ -86,6 +102,9 @@ function validRegister(whichForm,whichInput) {
 		if(valLength < 4) {
 			outputStr += " username should >= 4;";
 		}
+		else {
+			getUsrnameOnServer(inputVal,whichInput);
+		}
 	}
 	else if(nameAttr == 'password') {
 		if(valLength < 4) {
@@ -95,7 +114,7 @@ function validRegister(whichForm,whichInput) {
 			outputStr += " the password is not the same as retype input;";
 		}
 		else {
-			clearWarn($('input[name=retypePassword]',whichForm));
+			clearWarn($('input[name=retypePassword]',whichForm)); //clear the other one
 		}		
 	}
 	else if(nameAttr == 'retypePassword') {
@@ -106,7 +125,7 @@ function validRegister(whichForm,whichInput) {
 			outputStr += " the password is not the same as password input;";
 		}
 		else {
-			clearWarn($('input[name=password]',whichForm));
+			clearWarn($('input[name=password]',whichForm)); //clear the other one
 		}
 	}
 	else if(nameAttr == 'firstName') {

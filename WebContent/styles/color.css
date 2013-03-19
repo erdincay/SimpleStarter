@@ -33,6 +33,6 @@ tr.highlight td {
 .register {
 	color: blue;
 }
-#InputWarn {
+#InputWarn, #errorMessage {
 	color: red;
 }
