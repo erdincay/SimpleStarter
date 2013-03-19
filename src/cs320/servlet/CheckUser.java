@@ -38,7 +38,7 @@ public class CheckUser extends HttpServlet {
 				
 		Map<String, String> options = new LinkedHashMap<String, String>();
 		if(strUsr == null) {
-			options.put(strUsr, (new Boolean(true)).toString());
+			options.put(strUsr, (new Boolean(false)).toString());
 		}
 		else {
 			options.put(strUsr, ((Boolean)(FactoryF.getUsers().getUserByName(strUsr) != null)).toString());

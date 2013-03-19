@@ -76,10 +76,17 @@ function clearWarn(whichInput) {
 	}
 }
 
+function getTargetUrlbyCurLocation(target) {
+	var curUrl = document.location.pathname;
+	var strArray = curUrl.split("/");
+	
+	return document.location.origin + "/" + strArray[1] + "/" + target;
+}
+
 function getUsrnameOnServer(usrname, whichInput) {
 	warnMessage = " the user name is in used;";
 	$.get(
-			'http://localhost:8080/CS320Starter/CheckUser?username=' + usrname, 
+			getTargetUrlbyCurLocation('CheckUser') + '?username=' + usrname, 
 			function(responseJson) {
 				$.each(responseJson, function(key, value) {
 					if(key == usrname && value === 'true' ) {

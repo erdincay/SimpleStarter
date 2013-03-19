@@ -14,4 +14,6 @@
 <users>users.xml</users>
 </database>
 
+<src>https://github.com/gf4t47/CS320Starter.git</src>
+
 </conf>
