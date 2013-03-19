@@ -77,10 +77,14 @@ function clearWarn(whichInput) {
 }
 
 function getTargetUrlbyCurLocation(target) {
-	var curUrl = document.location.pathname;
-	var strArray = curUrl.split("/");
+	var strArray = document.location.pathname.split("/");
+	var path = "";
+	for(var i=1; i<strArray.length-1; i++) {
+		path += "/" + strArray[i];
+	}
+	path += "/" + target;
 	
-	return document.location.origin + "/" + strArray[1] + "/" + target;
+	return document.location.origin + path;
 }
 
 function getUsrnameOnServer(usrname, whichInput) {
@@ -89,7 +93,7 @@ function getUsrnameOnServer(usrname, whichInput) {
 			getTargetUrlbyCurLocation('CheckUser') + '?username=' + usrname, 
 			function(responseJson) {
 				$.each(responseJson, function(key, value) {
-					if(key == usrname && value === 'true' ) {
+					if(key === usrname && value === 'true' ) {
 						showWarn(whichInput, warnMessage);
 					}
 					else {

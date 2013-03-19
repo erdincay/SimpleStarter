@@ -4,7 +4,9 @@
 <c:choose>
 	<c:when test="${empty sessionScope[self:getUsrAttrName()]}">
 		<div id='log'>
-			<a href='Login' title='To Log In'>Login</a>
+			<a href='Login' title='To Log In'>SignIn</a>
+			<span> / </span>
+			<a href='Register' title='To Register'>SignUp</a>
 		</div>
 	</c:when>
 	<c:otherwise>
