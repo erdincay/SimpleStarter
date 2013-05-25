@@ -92,14 +92,16 @@ function getUsrnameOnServer(usrname, whichInput) {
 	$.get(
 			getTargetUrlbyCurLocation('CheckUser') + '?username=' + usrname, 
 			function(responseJson) {
-				$.each(responseJson, function(key, value) {
-					if(key === usrname && value === 'true' ) {
-						showWarn(whichInput, warnMessage);
-					}
-					else {
-						clearWarn(whichInput);
-					}
-				});
+				$.each(
+						responseJson, 
+						function(key, value) {
+							if(key === usrname && value === 'true' ) {
+								showWarn(whichInput, warnMessage);
+							}
+							else {
+								clearWarn(whichInput);
+							}
+						});
 			});
 }
 
