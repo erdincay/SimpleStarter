@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <conf>
 
+<database type = "xml" >
+<url>data</url>
+<projects>projects.xml</projects>
+<users>users.xml</users>
+</database>
+
 <database type = "sql" >
 <url>jdbc:mysql://localhost/cs320stu61</url>
 <!-- url>jdbc:mysql://cs3.calstatela.edu/cs320stu61</url -->
@@ -8,11 +14,7 @@
 <pwd>8i8b8Q!9</pwd>
 </database>
 
-<database type = "xml" >
-<url>data</url>
-<projects>projects.xml</projects>
-<users>users.xml</users>
-</database>
+
 
 <src>https://github.com/gf4t47/CS320Starter.git</src>
 
