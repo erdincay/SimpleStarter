@@ -11,66 +11,67 @@ import cs320.model.RewardsXmlC;
 import cs320.model.UsersC;
 import cs320.model.UsersXmlC;
 
-public class FactoryXmlF extends FactoryF{
-	
-	static private final String fstrPath = "url";
-	static private final String fstrPrjs = "projects";
-	static private final String fstrUsrs = "users";
-	
-	static private String strPath;
-	static private String strPrjs;
-	static private String strUsrs;
-	
-	static public enum DB {  
-        PROJECTS, 
-        USERS  
-    }; 
-	
-	public FactoryXmlF(Element el) {
-		super();
-		parseCfg(el);
-	}
-	
-	private void parseCfg(Element el) {
-		strPath = el.elementTextTrim(fstrPath);
-		strPrjs = el.elementTextTrim(fstrPrjs);
-		strUsrs = el.elementTextTrim(fstrUsrs);
-	}
-	
-	public static String getDbConnection(DB db) {
+public class FactoryXmlF extends FactoryF {
 
-		String ret = null;
+    static private final String fstrPath = "url";
+    static private final String fstrPrjs = "projects";
+    static private final String fstrUsrs = "users";
 
-		switch(db) 
-		{
-		case PROJECTS:
-			ret = getWebRoot() + "/" + strPath + "/" + strPrjs; 
-			break;
+    static private String strPath;
+    static private String strPrjs;
+    static private String strUsrs;
 
-		case USERS:
-			ret = getWebRoot() + "/" + strPath + "/" + strUsrs;
-			break;
+    static public enum DB {
+        PROJECTS,
+        USERS
+    }
 
-		default:
-			break;
-		}
+    ;
 
-		return ret;
-	}
+    public FactoryXmlF(Element el) {
+        super();
+        parseCfg(el);
+    }
 
-	public ProjectsI CreateProjects() {
-		return new ProjectsXmlC();
-	}
-	
-	public UsersC CreateUsers() {
-		return new UsersXmlC();
-	}
-	
-	public RewardsC CreateRewards(long id) {
-		return new RewardsXmlC();
-	}
-	
-	public PledgesI CreatePledges(long id) {
-		return new PledgesXmlC();
-	}
+    private void parseCfg(Element el) {
+        strPath = el.elementTextTrim(fstrPath);
+        strPrjs = el.elementTextTrim(fstrPrjs);
+        strUsrs = el.elementTextTrim(fstrUsrs);
+    }
+
+    public static String getDbConnection(DB db) {
+
+        String ret = null;
+
+        switch (db) {
+            case PROJECTS:
+                ret = getWebRoot() + "/" + strPath + "/" + strPrjs;
+                break;
+
+            case USERS:
+                ret = getWebRoot() + "/" + strPath + "/" + strUsrs;
+                break;
+
+            default:
+                break;
+        }
+
+        return ret;
+    }
+
+    public ProjectsI CreateProjects() {
+        return new ProjectsXmlC();
+    }
+
+    public UsersC CreateUsers() {
+        return new UsersXmlC();
+    }
+
+    public RewardsC CreateRewards(long id) {
+        return new RewardsXmlC();
+    }
+
+    public PledgesI CreatePledges(long id) {
+        return new PledgesXmlC();
+    }
 }

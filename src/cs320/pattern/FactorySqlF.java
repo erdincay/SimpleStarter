@@ -15,53 +15,52 @@ import cs320.model.UsersSqlC;
 
 public class FactorySqlF extends FactoryF {
 
-	static private final String fstrUrl = "url";
-	static private final String fstrUsr = "usr";
-	static private final String fstrPwd = "pwd";
-	
-	static private String strUrl;
-	static private String strUsr;
-	static private String strPwd;
-	
-	public FactorySqlF(Element el) {
-		super();
-		parseCfg(el);
-	}
-	
-	private void parseCfg(Element el) {
-		strUrl = el.elementTextTrim(fstrUrl);
-		strUsr = el.elementTextTrim(fstrUsr);
-		strPwd = el.elementTextTrim(fstrPwd);
-	}
+    static private final String fstrUrl = "url";
+    static private final String fstrUsr = "usr";
+    static private final String fstrPwd = "pwd";
 
-	public ProjectsI CreateProjects() {
-		return new ProjectsSqlC();
-	}
+    static private String strUrl;
+    static private String strUsr;
+    static private String strPwd;
 
-	public UsersC CreateUsers() {
-		return new UsersSqlC();
-	}
+    public FactorySqlF(Element el) {
+        super();
+        parseCfg(el);
+    }
 
-	public RewardsC CreateRewards(long id) {
-		RewardsC rds = null;
-		
-		try {
-			rds = new RewardsSqlC(id);
-		} 
-		catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		return rds;
-	}
+    private void parseCfg(Element el) {
+        strUrl = el.elementTextTrim(fstrUrl);
+        strUsr = el.elementTextTrim(fstrUsr);
+        strPwd = el.elementTextTrim(fstrPwd);
+    }
 
-	public PledgesI CreatePledges(long id) {
-		return new PledgesSqlC(id);
-	}
-	
-	public static java.sql.Connection getDbConnection() throws SQLException {
-        java.sql.Connection conn = java.sql.DriverManager.getConnection( strUrl, strUsr, strPwd );
-        
+    public ProjectsI CreateProjects() {
+        return new ProjectsSqlC();
+    }
+
+    public UsersC CreateUsers() {
+        return new UsersSqlC();
+    }
+
+    public RewardsC CreateRewards(long id) {
+        RewardsC rds = null;
+
+        try {
+            rds = new RewardsSqlC(id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return rds;
+    }
+
+    public PledgesI CreatePledges(long id) {
+        return new PledgesSqlC(id);
+    }
+
+    public static java.sql.Connection getDbConnection() throws SQLException {
+        java.sql.Connection conn = java.sql.DriverManager.getConnection(strUrl, strUsr, strPwd);
+
         return conn;
-	}
+    }
 }

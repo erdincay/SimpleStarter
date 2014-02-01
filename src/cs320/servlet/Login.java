@@ -17,8 +17,8 @@ import cs320.pattern.FactoryF;
  */
 @WebServlet("/Login")
 public class Login extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+    private static final long serialVersionUID = 1L;
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -26,57 +26,52 @@ public class Login extends HttpServlet {
         super();
     }
 
-	@Override
-	public void init(ServletConfig config) throws ServletException {
-		super.init(config);
-		
-		try
-        {
-            Class.forName( "com.mysql.jdbc.Driver" );
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        super.init(config);
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new ServletException(e);
         }
-        catch( ClassNotFoundException e )
-        {
-            throw new ServletException( e );
-        }
-		
-	}
-	
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		 // check if a user has logged in or not
-        if( request.getSession().getAttribute( HtmlAPI.getUsrAttrName() ) != null )
-        {
-            response.sendRedirect( "DisplayAllProjects" );
+
+    }
+
+    /**
+     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        // check if a user has logged in or not
+        if (request.getSession().getAttribute(HtmlAPI.getUsrAttrName()) != null) {
+            response.sendRedirect("DisplayAllProjects");
             return;
         }
-        
-		request.getRequestDispatcher( "/WEB-INF/Login.jsp" ).forward(
-				request, response );
-	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String strUsr = request.getParameter(HtmlAPI.getUsrAttrName());
-		String strPwd = request.getParameter(HtmlAPI.getPwdAttrName());
-		String strSubmit = request.getParameter(HtmlAPI.getSubmitAttrName());
-		
-		if(strSubmit != null && strSubmit.equals(HtmlAPI.getCancelAttrName())) {
-        	response.sendRedirect("DisplayAllProjects");
-        	return;
+        request.getRequestDispatcher("/WEB-INF/Login.jsp").forward(
+                request, response);
+    }
+
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String strUsr = request.getParameter(HtmlAPI.getUsrAttrName());
+        String strPwd = request.getParameter(HtmlAPI.getPwdAttrName());
+        String strSubmit = request.getParameter(HtmlAPI.getSubmitAttrName());
+
+        if (strSubmit != null && strSubmit.equals(HtmlAPI.getCancelAttrName())) {
+            response.sendRedirect("DisplayAllProjects");
+            return;
         }
-		
-		if(FactoryF.getUsers().valid(strUsr, strPwd)) {
-			HtmlAPI.setUsrToSession(request, strUsr);
-		    response.sendRedirect( "DisplayAllProjects" );
-		}
-		else {
-			response.sendRedirect( "Login" );
-		}
-	}
+
+        if (FactoryF.getUsers().valid(strUsr, strPwd)) {
+            HtmlAPI.setUsrToSession(request, strUsr);
+            response.sendRedirect("DisplayAllProjects");
+        } else {
+            response.sendRedirect("Login");
+        }
+    }
 
 }

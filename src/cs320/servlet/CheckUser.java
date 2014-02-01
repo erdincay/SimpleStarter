@@ -20,8 +20,8 @@ import cs320.pattern.FactoryF;
  */
 @WebServlet("/CheckUser")
 public class CheckUser extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+    private static final long serialVersionUID = 1L;
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -30,33 +30,32 @@ public class CheckUser extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String strUsr = request.getParameter(HtmlAPI.getUsrAttrName());
-				
-		Map<String, String> options = new LinkedHashMap<String, String>();
-		if(strUsr == null) {
-			options.put(strUsr, (new Boolean(false)).toString());
-		}
-		else {
-			options.put(strUsr, ((Boolean)(FactoryF.getUsers().getUserByName(strUsr) != null)).toString());
-		}
-		
-		String json = new Gson().toJson(options);
+    /**
+     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String strUsr = request.getParameter(HtmlAPI.getUsrAttrName());
 
-		response.setContentType("application/json");
-	    response.setCharacterEncoding("UTF-8");
-	    response.getWriter().write(json);
+        Map<String, String> options = new LinkedHashMap<String, String>();
+        if (strUsr == null) {
+            options.put(strUsr, (new Boolean(false)).toString());
+        } else {
+            options.put(strUsr, ((Boolean) (FactoryF.getUsers().getUserByName(strUsr) != null)).toString());
+        }
 
-	}
+        String json = new Gson().toJson(options);
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request,response);
-	}
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        response.getWriter().write(json);
+
+    }
+
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
+    }
 
 }

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XMLSpy v2013 (http://www.altova.com) by  () -->
 <users>
-	<user>
-		<name>cysun</name>
-		<password>abcd</password>
-	</user>
-	<user>
-		<name>cs320stu31</name>
-		<password>abcd</password>
-	</user>
-	<user>
-		<name>kern</name>
-		<password>kern</password>
-	</user>
+    <user>
+        <name>cysun</name>
+        <password>abcd</password>
+    </user>
+    <user>
+        <name>cs320stu31</name>
+        <password>abcd</password>
+    </user>
+    <user>
+        <name>kern</name>
+        <password>kern</password>
+    </user>
 </users>

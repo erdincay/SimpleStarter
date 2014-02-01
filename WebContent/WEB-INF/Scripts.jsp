@@ -1,1 +1,1 @@
-<script type='text/javascript' src='scripts/global.js' ></script>
+<script type='text/javascript' src='scripts/global.js'></script>
